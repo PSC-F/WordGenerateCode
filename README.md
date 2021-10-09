@@ -8,3 +8,10 @@
   ```
   -- public dynamic Pretty { get; set; }
   ```
+OSS ☁
+    \
+      \pull Word-template
+        \ 
+          \ Replace 
+            \  
+              \generate newWord      
