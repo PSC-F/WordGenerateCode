@@ -9,7 +9,7 @@
   -- public dynamic Pretty { get; set; }
   ```
 * OSS ☁ ->pull Word-template🎫 
-        * -> Replace🚗
-        * -> generate newWord 🎫 
-      * <- push file 🎫 
-      * -> dowload url 🎯
+        *  -> Replace🚗
+        *  -> generate newWord 🎫 
+      *  <- push file 🎫 
+      *  -> dowload url 🎯
