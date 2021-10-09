@@ -8,10 +8,8 @@
   ```
   -- public dynamic Pretty { get; set; }
   ```
-OSS ☁
-    \
-      \pull Word-template
-        \ 
-          \ Replace 
-            \  
-              \generate newWord      
+OSS ☁ ->pull Word-template🎫 
+         -> Replace🚗
+         -> generate newWord 🎫 
+       <- push file 🎫 
+       -> dowload url 🎯
