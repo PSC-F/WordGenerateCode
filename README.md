@@ -8,7 +8,7 @@
   ```
   -- public dynamic Pretty { get; set; }
   ```
-* OSS ☁ ->pull Word-template🎫 
+* OSS ☁ ->pull template🎫 
 *  -> Replace🚗
 *  -> generate newWord 🎫 
 *  <- push file 🎫 
