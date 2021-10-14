@@ -89,8 +89,7 @@ public class NPOITemplateExtensions
             // 遍历段落 
             foreach (var para in doc.Paragraphs)
             {   // 是否有开始标记
-                if (!IsGenerate) // 开锁
-                {
+          
                     if (!IsGenerate) // 开锁
                     {
                         // 是否可生成类
@@ -112,7 +111,7 @@ public class NPOITemplateExtensions
                             NPOITemplateExtensions.className = "";
                         }
                     }
-                }
+                
             }
 
             IsGenerate = false;

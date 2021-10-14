@@ -2,29 +2,29 @@
 
 /// <summary>
 /// desc: BridgeConcentEntity
-/// time: 2021/10/8 9:50:19
+/// time: 2021/10/8 14:41:25
 /// remark: Word文档代码生成器生成、DTO对象
 /// au: zpf  
 /// </summary>
 public class BridgeConcentEntity{
                     
 
-   public dynamic BridgeName = null;
+   public dynamic BridgeName { get; set; }
 
-   public dynamic RoadName = null;
+   public dynamic RoadName { get; set; }
 
-   public dynamic CenterStake = null;
+   public dynamic CenterStake { get; set; }
 
-   public dynamic BuildDate = null;
+   public dynamic BuildDate { get; set; }
 
-   public dynamic BridgeLength = null;
+   public dynamic BridgeLength { get; set; }
 
-   public dynamic Span = null;
+   public dynamic Span { get; set; }
 
-   public dynamic BridgeWidthCombination = null;
+   public dynamic BridgeWidthCombination { get; set; }
 
-   public dynamic SuperStructure = null;
+   public dynamic SuperStructure { get; set; }
 
-   public dynamic Substructure = null;
+   public dynamic Substructure { get; set; }
 
 }

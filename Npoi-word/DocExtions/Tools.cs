@@ -64,7 +64,7 @@ public class {className}{{
                     var filed = match.Value;
                     Tools.Write(className,
                         $@"
-   public dynamic {filed.Substring(1, filed.Length - 2)} = null;"
+   public dynamic {filed.Substring(1, filed.Length - 2)} {{ get; set; }}"
                         );
                 }
             }
@@ -76,7 +76,7 @@ public class {className}{{
                     var filed = match.Value;
                     Tools.Write(className,
                         $@"
-   public dynamic {filed.Substring(1, filed.Length - 2)} = null;"
+   public dynamic {filed.Substring(1, filed.Length - 2)} {{ get; set; }}"
                     );
                 }
             }
