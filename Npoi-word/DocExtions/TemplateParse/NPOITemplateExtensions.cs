@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.IO;
@@ -6,6 +6,7 @@ using System.Reflection;
 using System.Text;
 using System.Text.RegularExpressions;
 using NPOI.OpenXmlFormats.Wordprocessing;
+using NPOI.SS.Formula.Functions;
 using NPOI.XWPF.UserModel;
 
 /// <summary>
@@ -411,7 +412,7 @@ public class NPOITemplateExtensions
                             var r = dynamicTable.CreateRow();
                             r.GetCTRow().AddNewTrPr().AddNewTrHeight().val = (ulong) 426;
                             foreach (var xwpfTableCell in r.GetTableCells())
-                            {   
+                            {
                                 // 设置垂直居中
                                 xwpfTableCell.SetVerticalAlignment(XWPFTableCell.XWPFVertAlign.CENTER);
                                 // 设置水平居中
@@ -458,6 +459,7 @@ public class NPOITemplateExtensions
                                 {
                                     break;
                                 }
+
                                 try
                                 {
                                     // Console.WriteLine(rowIndex + "行");
@@ -538,8 +540,9 @@ public class NPOITemplateExtensions
         //             string code = entity[0].GetType().GetProperty("TableIndex").GetValue(entity[0], null).ToString();
         //             if (int.TryParse(code, out int codeNum))
         //             {}}
-        // 按相同内容纵向合并单元格(暂时指定0列)
-        // 取表头
+        //按相同内容纵向合并单元格(暂时指定0列)
+        //取表头
+        var rowTextStack = new Stack<string>(); // 存储相同行的索引行号
         var tableTotalCount = doc.Tables.Count;
         for (int tableIndex = 0; tableIndex < tableTotalCount; tableIndex++)
         {
@@ -555,32 +558,42 @@ public class NPOITemplateExtensions
             var rowNums = doc.Tables[tableIndex].NumberOfRows;
             int fromNum = -1;
             int toNum = 0;
-            for (int rowIndex = 1; rowIndex <= rowNums - 2; rowIndex++)
+            for (int rowIndex = 1; rowIndex <= rowNums - 1; rowIndex++)
             {
                 var currText = doc.Tables[tableIndex]
                     .GetRow(rowIndex)
                     .GetCell(0)
                     .GetText();
-                var nextText = doc.Tables[tableIndex]
-                    .GetRow(rowIndex + 1)
-                    .GetCell(0)
-                    .GetText();
-                if (currText.Equals(nextText))
-                {
-                    if (fromNum == -1)
-                    {
-                        fromNum = rowIndex; // 起始索引
-                    }
-
-                    ++toNum;
-                }
-                // 计算第一列
+                rowTextStack.Push(currText);
+              
             }
-
-            // 纵向合并单元格
-            if (fromNum != -1)
+            // 计算合并
+            int fromIndex = 0;
+            int toIndex = 0;
+            while (rowTextStack.Count >= 1)
             {
-                mergeCellVert(doc.Tables[tableIndex], 0, fromNum, toNum + 1);
+                // var preName = "";
+                // if (rowTextStack.Count==2)
+                // {
+                //     preName=rowTextStack.Peek();
+                //     Console.WriteLine(preName);
+                // }
+                if (rowTextStack.TryPop(out string name))
+                {
+                    // if (rowTextStack.Count==1&&preName.Equals(name))
+                    // {
+                    //     Console.WriteLine(name);
+                    //     mergeCellVert(doc.Tables[tableIndex], 0,1, 2);
+                    // }
+                    rowTextStack.TryPeek(out string nextName);
+                    if (name.Equals(nextName))
+                    {   
+                        toIndex = (rowTextStack.Count+1);
+                        fromIndex = (rowTextStack.Count);
+                        Console.WriteLine("from"+fromIndex+"to"+toIndex+"tb"+tableIndex);
+                        mergeCellVert(doc.Tables[tableIndex], 0, fromIndex, toIndex);
+                    }
+                }
             }
         }
 
@@ -664,14 +677,12 @@ public class NPOITemplateExtensions
                 }
                 else if (text.Contains($@"#{p.Name}#"))
                 {
-                    // var gfs = new FileStream($@"D:\\UploadFiles\\{p.Name}.jpg", FileMode.Open, FileAccess.Read);
-                    text = text.Replace($@"#{p.Name}#", p.GetValue(model, null).ToString());
+                      text = text.Replace($@"#{p.Name}#", "");
                     try
                     {
-                        // bug here Can not normal display  
                         Stream stream = model.GetType().GetProperty(p.Name).GetValue(model, null);
-                        run.AddPicture(stream, (int) NPOI.XWPF.UserModel.PictureType.PNG, $@"{p.Name}.PNG", 5300000,
-                            2500000);
+                        run.AddPicture(stream, (int) NPOI.XWPF.UserModel.PictureType.PNG, $@"{p.Name}.PNG", 1500000,
+                            1500000);
                     }
                     catch (Exception e)
                     {
@@ -698,12 +709,12 @@ public class NPOITemplateExtensions
             XWPFTableCell cell = table.GetRow(cellIndex).GetCell(colIndex);
             if (cellIndex == fromCell)
             {
-                Console.WriteLine("Restart: " + cell.GetText());
+                // Console.WriteLine("Restart: " + cell.GetText());
                 cell.GetCTTc().AddNewTcPr().AddNewVMerge().val = ST_Merge.restart;
             }
             else
             {
-                Console.WriteLine("continue: " + cell.GetText());
+                // Console.WriteLine("continue: " + cell.GetText());
 
                 cell.GetCTTc().AddNewTcPr().AddNewVMerge().val = ST_Merge.@continue;
             }
