@@ -14,9 +14,10 @@
 *  <- push file 🎫 
 *  -> dowload url 🎯
 
- 
+ ``` C#
   NPOITemplateExtensions.AddEntity(BridgeConcent);
   NPOITemplateExtensions.AddEntity(BridgeMember);
   NPOITemplateExtensions.AddEntity(BridgeOverview);
   NPOITemplateExtensions.AddDynamicData("SurfaceDiseaseList",SurfaceDiseaseList);
   NPOITemplateExtensions.ExportWithDynamicList(templateStreamFromOss)
+``` 
