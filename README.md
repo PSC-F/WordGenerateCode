@@ -13,3 +13,10 @@
 *  -> generate newWord 🎫 
 *  <- push file 🎫 
 *  -> dowload url 🎯
+
+ 
+  NPOITemplateExtensions.AddEntity(BridgeConcent);
+  NPOITemplateExtensions.AddEntity(BridgeMember);
+  NPOITemplateExtensions.AddEntity(BridgeOverview);
+  NPOITemplateExtensions.AddDynamicData("SurfaceDiseaseList",SurfaceDiseaseList);
+  NPOITemplateExtensions.ExportWithDynamicList(templateStreamFromOss)
