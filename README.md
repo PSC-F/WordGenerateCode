@@ -15,9 +15,9 @@
 *  -> dowload url 🎯
 
  ``` C#
-  NPOITemplateExtensions.AddEntity(BridgeConcent);
+  NPOITemplateExtensions.AddEntity(BridgeConcent); // 添加实体
   NPOITemplateExtensions.AddEntity(BridgeMember);
-  NPOITemplateExtensions.AddEntity(BridgeOverview);
-  NPOITemplateExtensions.AddDynamicData("SurfaceDiseaseList",SurfaceDiseaseList);
-  NPOITemplateExtensions.ExportWithDynamicList(templateStreamFromOss)
+  NPOITemplateExtensions.AddEntity(BridgeOverview); 
+  NPOITemplateExtensions.AddDynamicData("SurfaceDiseaseList",SurfaceDiseaseList); // 添加动态数据实体
+  NPOITemplateExtensions.ExportWithDynamicList(templateStreamFromOss) // 动态导出
 ``` 
