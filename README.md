@@ -27,7 +27,7 @@
   NPOITemplateExtensions.ExportWithDynamicList(templateStreamFromOss) // 动态导出
 ``` 
 ---
-   * tips：可搭配OSS云存储使用、模板放在云端
+   * Tips：可搭配OSS云存储使用、模板放在云端
 * OSS ☁ ->pull template🎫 
 *  -> Replace🚗
 *  -> generate newWord 🎫 
