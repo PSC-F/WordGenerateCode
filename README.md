@@ -8,7 +8,7 @@
  * < e >   // 结束标记
   ---
   组合示例:
- * <s=Company>$Pretty$</e>
+ * <s=Company>$Pretty$< / e>
   ---
   * 3.调用实体类生成工具 即可生成相应实体类代码
   output->
