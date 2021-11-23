@@ -7,9 +7,9 @@
    | 标签     |说明 |
   | ---- | ---- |
   |<s=ClassName>| 开始标记 |
-  |$filed$ |声明文本|
+  |$Filed$ |声明文本|
   |< e > |结束标记|
-  |#picName#|声明图片|
+  |#PicName#|声明图片|
   ---
   组合示例:
  * <s=Company>$Pretty$< / e>
