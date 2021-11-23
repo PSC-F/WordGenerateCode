@@ -10,19 +10,14 @@
   组合示例:
  <s=Company>$Pretty$</e>
   ---
-  *3.调用实体类生成工具 即可生成相应实体类代码
+  * 3.调用实体类生成工具 即可生成相应实体类代码
   output->
   Company.cs
   ```
   -- public dynamic Pretty { get; set; }
   ```
   ---
-  *tips：可搭配OSS云存储使用、模板放在云端
-* OSS ☁ ->pull template🎫 
-*  -> Replace🚗
-*  -> generate newWord 🎫 
-*  <- push file 🎫 
-*  -> dowload url 🎯
+ 
 * 4.代码调用、结合业务调用AddEntity、AddDynamicData填充数据、 调用生成ExportWithDynamicList方法即可生成复杂文档。
  ``` C#
   NPOITemplateExtensions.AddEntity(BridgeConcent); // 添加实体
@@ -31,3 +26,10 @@
   NPOITemplateExtensions.AddDynamicData("SurfaceDiseaseList",SurfaceDiseaseList); // 添加动态数据实体
   NPOITemplateExtensions.ExportWithDynamicList(templateStreamFromOss) // 动态导出
 ``` 
+---
+   * tips：可搭配OSS云存储使用、模板放在云端
+* OSS ☁ ->pull template🎫 
+*  -> Replace🚗
+*  -> generate newWord 🎫 
+*  <- push file 🎫 
+*  -> dowload url 🎯
