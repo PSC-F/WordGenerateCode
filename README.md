@@ -3,12 +3,12 @@
 ## example
  * 1.制作Word 模板
  * 2.结构化模板、声明模板语法 
- <s=ClassName>  // 开始标记
-  $filed$  // 动态输出内容 (支持整段落、或单句)
- <e>   // 结束标记
+ * <s=ClassName>  // 开始标记
+ * $filed$  // 动态输出内容 (支持整段落、或单句)
+ * <e>   // 结束标记
   ---
   组合示例:
- <s=Company>$Pretty$</e>
+ * <s=Company>$Pretty$</e>
   ---
   * 3.调用实体类生成工具 即可生成相应实体类代码
   output->
