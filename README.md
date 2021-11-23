@@ -10,6 +10,7 @@
   |$Filed$ |声明文本|
   |< e > |结束标记|
   |#PicName#|声明图片|
+  |<loop=SurfaceDiseaseList>|声明多行文本|
   ---
   组合示例:
  * <s=Company>$Pretty$< / e>
